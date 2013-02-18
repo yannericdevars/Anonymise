@@ -60,7 +60,7 @@ class anonymUtils {
      * @return int id aléatoire
      */
     public static function getAnonymousId($tab_ids_used) {
-        $anonymousId = rand(4000000, 6000000);
+        $anonymousId = rand();
 
         if (count(self::$id_existants) == 0) {
             self::$id_existants = $tab_ids_used;

@@ -1,5 +1,8 @@
 <?php
 
+// Fichier Php utilisé en tant que lanceur
+// Simplifié pour les copier-coller
+
 require_once 'anonymUtils.php';
 require_once 'user.php';
 

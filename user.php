@@ -1,6 +1,6 @@
 <?php
 /**
- * Description of user
+ * Classe du User
  *
  * @author yann-eric@live.fr
  */

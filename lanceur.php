@@ -24,7 +24,7 @@ $id_modifie = anonymUtils::getAnonymousId($tab_ids_used);
 
 $tab_users = array();
 
-for ($i=0; $i<100; $i++)
+for ($i=0; $i<1000; $i++)
 {
     $user = new user();
     $id_modifie = anonymUtils::getAnonymousId($tab_ids_used);
@@ -45,6 +45,8 @@ for ($i=0; $i<100; $i++)
     
      $user->setPrenom($civUtil[1]);
      $user->setNom($civUtil[0]);
+     $user->setLogin(anonymUtils::generateLogin($user->getNom(), $user->getPrenom()));
+     $user->setPassword(anonymUtils::generatePassword());
    
      $tab_users[] = $user;
 }
@@ -52,9 +54,15 @@ for ($i=0; $i<100; $i++)
 $compteur = 1;
 foreach ($tab_users as $value)
 {
-    echo "Utilisateur : ".$compteur ." ";
-    echo $value->getId() . " " . $value->getNom() .
-            " " .$value->getPrenom(). " " .$value->getGenre();
+    $separator = " / ";
+    echo "Utilisateur : ".$compteur .$separator;
+    echo 
+    $value->getId() .       $separator .
+    $value->getNom().       $separator .
+    $value->getPrenom().    $separator .
+    $value->getGenre().     $separator .
+    $value->getLogin().     $separator .
+    $value->getPassword();
     echo "\n";
     $compteur ++;
 }

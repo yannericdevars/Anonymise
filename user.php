@@ -10,6 +10,8 @@ class user
     private $nom;
     private $prenom;
     private $genre;
+    private $login;
+    private $password;
     
     /**
      * Constructeur de classe
@@ -35,6 +37,14 @@ class user
     {
         return $this->genre;
     }
+    public function getLogin()
+    {
+        return $this->login;
+    }
+    public function getPassword()
+    {
+        return $this->password;
+    }
     
     public function setId($var)
     {
@@ -51,6 +61,14 @@ class user
     public function setGenre($var)
     {
         $this->genre = $var;
+    }
+    public function setLogin($var)
+    {
+        $this->login = $var;
+    }
+    public function setPassword($var)
+    {
+        $this->password = $var;
     }
     
 }

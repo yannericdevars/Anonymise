@@ -6,6 +6,8 @@
 require_once 'anonymUtils.php';
 require_once 'user.php';
 
+$nb_utilisateurs = 10000; // Nobre d'utilisateurs à créer
+
 $fp_names = fopen('names', "r"); //lecture
 $fp_names_fem = fopen('names_fem', "r"); //lecture
 $fp_names_masc = fopen('names_masc', "r"); //lecture
@@ -24,7 +26,7 @@ $id_modifie = anonymUtils::getAnonymousId($tab_ids_used);
 
 $tab_users = array();
 
-for ($i=0; $i<1000; $i++)
+for ($i=0; $i<$nb_utilisateurs; $i++)
 {
     $user = new user();
     $id_modifie = anonymUtils::getAnonymousId($tab_ids_used);
@@ -49,12 +51,17 @@ for ($i=0; $i<1000; $i++)
      $user->setPassword(anonymUtils::generatePassword());
    
      $tab_users[] = $user;
+     
+     if ($i % 500 == 0)
+     {
+         echo "Traitement du ".$i. " ème utilisateur.\n";
+     }
 }
 
 $compteur = 1;
 foreach ($tab_users as $value)
 {
-    $separator = " / ";
+    $separator = " / ";   
     echo "Utilisateur : ".$compteur .$separator;
     echo 
     $value->getId() .       $separator .

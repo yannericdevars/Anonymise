@@ -156,20 +156,23 @@ class anonymUtils
     public static function generateLogin($name, $first_name)
     {
         $logintemp = $name . $first_name;
-
-        $soon_exist = false;
-        foreach (self::$login_existants as $exist)
+        
+        if (count(self::$login_existants) > 0)
         {
-            if ($exist == $logintemp)
+            $soon_exist = false;
+            foreach (self::$login_existants as $exist)
             {
-                $soon_exist = true;
-                break;
+                if ($exist == $logintemp)
+                {
+                    $soon_exist = true;
+                    break;
+                }
             }
-        }
 
-        if ($soon_exist)
-        {
-            $logintemp = $logintemp . "o";
+            if ($soon_exist)
+            {
+                $logintemp = $logintemp . "o";
+            }
         }
 
         self::$login_existants[] = $logintemp;
